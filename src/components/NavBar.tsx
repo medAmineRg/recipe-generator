@@ -5,7 +5,9 @@ const NavBar = () => {
   return (
     <div className="flex justify-between items-center p-4 bg-blue-500 text-sm text-white">
       <div>
-        <Link href={"#"} className="text-lg font-medium hover:text-slate-200">
+        <Link
+          href={"/recipe"}
+          className="text-lg font-medium hover:text-slate-200">
           CWT
         </Link>
       </div>
@@ -17,7 +19,7 @@ const NavBar = () => {
         <Link href={"/about"} className="hover:text-slate-200">
           About
         </Link>
-        <Link href={"#"} className="hover:text-slate-200">
+        <Link href={"/sign-out"} className="hover:text-slate-200">
           Sign out
         </Link>
       </div>

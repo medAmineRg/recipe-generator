@@ -3,7 +3,7 @@ import React from "react";
 
 const AppDescription = () => {
   return (
-    <div className="p-5 lg:flex lg:justify-center mt-10">
+    <div className="p-5 lg:flex lg:justify-center my-10">
       <div className="rounded-md shadow-md p-5 lg:w-1/2">
         <p className="text-sm">
           <span className="text-blue-500 font-bold text-lg">{`"Cooking Without Thinking,"`}</span>
