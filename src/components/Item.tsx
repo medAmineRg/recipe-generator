@@ -4,7 +4,7 @@ import React from "react";
 
 const Item = () => {
   return (
-    <div className="w-[412px] h-max bg-white rounded-lg shadow relative">
+    <div className="lg:w-[312px] rounded-lg shadow-md relative">
       <Link href="#">
         <Image
           width={412}
@@ -13,12 +13,13 @@ const Item = () => {
           src="/omelette.png"
           alt=""
         />
+        <div className="p-2 flex justify-between items-center">
+          <h5 className="text-lg font-medium text-slate-900">
+            Omelette cheese
+          </h5>
+          <p className="text-blue-600 text-sm font-medium">Date: 2023-11-06</p>
+        </div>
       </Link>
-      <div className="p-5">
-        <h5 className="text-xl font-semibold tracking-tight text-gray-900">
-          Omelette cheese
-        </h5>
-      </div>
     </div>
   );
 };
