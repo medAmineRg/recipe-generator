@@ -16,10 +16,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " bg-white text-black"}>
+      <body className={inter.className + " p-5"}>
         <NavBar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );

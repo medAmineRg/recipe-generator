@@ -4,20 +4,25 @@ import React from "react";
 
 const Item = () => {
   return (
-    <div className="lg:w-[312px] rounded-lg shadow-md relative">
+    <div className="group rounded-lg bg-white shadow-md lg:w-[330px]">
       <Link href="#">
-        <Image
-          width={412}
-          height={412}
-          className="rounded-t-lg"
-          src="/omelette.png"
-          alt=""
-        />
-        <div className="p-2 flex justify-between items-center">
-          <h5 className="text-lg font-medium text-slate-900">
-            Omelette cheese
-          </h5>
-          <p className="text-blue-600 text-sm font-medium">Date: 2023-11-06</p>
+        <div className="rounded-lg px-4 py-6 hover:cursor-pointer hover:bg-zinc-950 hover:text-white">
+          <Image
+            width={412}
+            height={412}
+            className="rounded-t-lg"
+            src="/omelette.png"
+            alt=""
+          />
+          <div className="flex items-center justify-between p-2">
+            <h5 className="text-lg font-medium">Omelette cheese</h5>
+            <p className="text-sm font-medium">Date: 2023-11-06</p>
+          </div>
+          <div className="">
+            <button className="w-full rounded-md bg-slate-900 p-2 text-white group-hover:bg-white group-hover:text-black">
+              See the recipe
+            </button>
+          </div>
         </div>
       </Link>
     </div>

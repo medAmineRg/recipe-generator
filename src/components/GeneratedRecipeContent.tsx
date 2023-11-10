@@ -4,10 +4,10 @@ import { recipeType } from "@/app/types/Types";
 
 const GeneratedRecipeContent = ({ recipe }: { recipe: recipeType }) => {
   return (
-    <div className="px-5 mt-10 flex flex-col justify-center items-center">
-      <div className="lg:flex lg:justify-center w-[95%] lg:w-[70%] gap-5 mt-5">
+    <div className="mt-10 flex flex-col items-center justify-center px-5">
+      <div className="mt-5 w-[95%] gap-5 lg:flex lg:w-[70%] lg:justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="relative w-[312px] h-[312px] lg:w-[412px] lg:h-[412px]">
+          <div className="relative h-[312px] w-[312px] shadow-xl lg:h-[412px] lg:w-[412px]">
             <Image
               src={"/omelette.png"}
               alt="Recipe Image"
@@ -15,11 +15,11 @@ const GeneratedRecipeContent = ({ recipe }: { recipe: recipeType }) => {
               className="rounded-md"
             />
           </div>
-          <div className="mt-8 lg:mt-0 flex flex-col justify-between items-center">
-            <h1 className="text-3xl font-medium text-center lg:text-left">
+          <div className="mt-8 flex flex-col items-center justify-between lg:mt-0">
+            <h1 className="text-center text-3xl font-medium lg:text-left">
               {recipe.recipeName}
             </h1>
-            <div className="flex justify-around lg:justify-between gap-4 mt-2">
+            <div className="mt-2 flex justify-around gap-4 lg:justify-between">
               <h3 className="font-medium">
                 <span className="text-slate-600">Creator: </span>Med Amine
               </h3>
@@ -29,41 +29,41 @@ const GeneratedRecipeContent = ({ recipe }: { recipe: recipeType }) => {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-6 mt-10 lg:hidden">
-          <div className="w-14 h-[2px] bg-slate-200"></div>
-          <div className="w-10 h-10 border-2 border-slate-200 rotate-45"></div>
-          <div className="w-14 h-[2px] bg-slate-200"></div>
+        <div className="mt-10 flex items-center justify-center gap-6 lg:hidden">
+          <div className="h-[2px] w-14 bg-slate-200"></div>
+          <div className="h-10 w-10 rotate-45 border-2 border-slate-200"></div>
+          <div className="h-[2px] w-14 bg-slate-200"></div>
         </div>
 
         {/* ingredients + preparation */}
         <div className="">
-          <div className="lg:flex gap-8">
-            <div className="p-4 bg-gray-50 mt-10 shadow-sm lg:mt-0">
+          <div className="gap-8 lg:flex">
+            <div className="mt-10 bg-gray-50 p-4 shadow-sm lg:mt-0">
               <h3 className="text-xl font-medium">Ingredients</h3>
               <div className="ml-2 mt-2">
                 {recipe.ingredients.map((ingredient) => (
-                  <li className="text-gray-700 font-medium" key={ingredient}>
+                  <li className="font-medium text-gray-700" key={ingredient}>
                     {ingredient}
                   </li>
                 ))}
               </div>
             </div>
-            <div className="p-4 mt-10 lg:bg-gray-50 shadow-sm lg:mt-0">
+            <div className="mt-10 p-4 shadow-sm lg:mt-0 lg:bg-gray-50">
               <h3 className="text-xl font-medium">Additional Ingredients</h3>
               <div className="ml-2 mt-2">
                 {recipe.additionalIngredients.map((ingredient) => (
-                  <li className="text-gray-700 font-medium" key={ingredient}>
+                  <li className="font-medium text-gray-700" key={ingredient}>
                     {ingredient}
                   </li>
                 ))}
               </div>
             </div>
           </div>
-          <div className="p-4 bg-gray-50 mt-10 lg:mt-5 shadow-sm lg:bg-white">
+          <div className="mt-10 bg-gray-50 p-4 shadow-sm lg:mt-5 lg:bg-white">
             <h3 className="text-xl font-medium">Preparation</h3>
             <div className="mt-2">
               {recipe.steps.map((step, i) => (
-                <h1 className="text-gray-700 font-medium mb-2" key={i}>
+                <h1 className="mb-2 font-medium text-gray-700" key={i}>
                   {step}
                 </h1>
               ))}

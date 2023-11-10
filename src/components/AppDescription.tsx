@@ -3,8 +3,8 @@ import React from "react";
 
 const AppDescription = () => {
   return (
-    <div className="p-5 lg:flex lg:justify-center my-10">
-      <div className="rounded-md shadow-md p-5 lg:w-1/2">
+    <div className="p-5 lg:flex lg:justify-center my-10 ">
+      <div className="rounded-md shadow-md p-5 lg:w-1/2 bg-white">
         <p className="text-sm">
           <span className="text-blue-500 font-bold text-lg">{`"Cooking Without Thinking,"`}</span>
           {` is your cooking guide to overcome the paradox of choice in the kitchen. This app is your ultimate kitchen companion for those moments when you open your pantry or refrigerator, see a few ingredients, and wonder, "What can I cook with these?". It simplifies the decision-making process by generating a single, delicious recipe based on your ingredients, along with suggested additional ingredients to make your meal truly unforgettable. With clear step-by-step instructions, you can effortlessly prepare a delicious dish, all without the stress of too many choices.`}
@@ -12,7 +12,7 @@ const AppDescription = () => {
 
         <Link
           href={"/about"}
-          className="text-xs font-semibold text-blue-400 hover:text-blue-500 hover:underline">
+          className="text-xs font-semibold text-blue-500 hover:underline">
           Click for more information about the application.
         </Link>
         <h3 className="text-xl font-medium text-red-600">Note!</h3>

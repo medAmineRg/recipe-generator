@@ -4,8 +4,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="bg-blue-500 p-5 text-white">
-      <div className="flex justify-between items-center">
+    <div className="mt-10">
+      <div className="flex items-center justify-between">
         <div className="flex items-center">
           <Link href={"https://www.linkedin.com/in/mohamed-amine-rguig/"}>
             <Image
@@ -13,7 +13,8 @@ const Footer = () => {
               alt="social icon"
               width={30}
               height={30}
-              className="object-contain"></Image>
+              className="object-contain"
+            ></Image>
           </Link>
           <Link href={"https://www.instagram.com/"}>
             <Image
@@ -21,7 +22,8 @@ const Footer = () => {
               alt="social icon"
               width={30}
               height={30}
-              className="object-contain"></Image>
+              className="object-contain"
+            ></Image>
           </Link>
           <Link href={"https://www.facebook.com/"}>
             <Image
@@ -29,10 +31,11 @@ const Footer = () => {
               alt="social icon"
               width={30}
               height={30}
-              className="object-contain"></Image>
+              className="object-contain"
+            ></Image>
           </Link>
         </div>
-        <div className="md:flex md:gap-5 text-sm">
+        <div className="text-sm md:flex md:gap-5">
           <Link href="/gmail.com">
             <div className="flex gap-2">
               <Image
@@ -40,22 +43,24 @@ const Footer = () => {
                 alt="social icon"
                 width={20}
                 height={20}
-                className="object-contain"></Image>
+                className="object-contain"
+              ></Image>
               <p>rguig.medamine@gmail.com</p>
             </div>
           </Link>
-          <div className="flex gap-2 mt-1 md:mt-0">
+          <div className="mt-1 flex gap-2 md:mt-0">
             <Image
-              src={"/phone.jpg"}
+              src={"/phoneB.png"}
               alt="social icon"
               width={15}
               height={15}
-              className="object-contain rotate-180"></Image>
+              className="object-contain"
+            ></Image>
             <p>+212 779 795 192</p>
           </div>
         </div>
       </div>
-      <div className="border my-5"></div>
+      <div className="my-5 border"></div>
       <div className="flex justify-between text-xs">
         <p>2023 alright reserved</p>
         <p>Created By RGUIG Mohamed Amine</p>
