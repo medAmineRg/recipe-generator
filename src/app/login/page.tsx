@@ -1,11 +1,19 @@
+"use client";
 import Image from "next/image";
-
+import { signIn, useSession } from "next-auth/react";
 const Login = () => {
+  const { data, status } = useSession();
+
+  console.log({ data, status });
+
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-10">
       <h1 className="text-3xl font-bold ">Welcome!</h1>
       <div className="flex h-[220px] w-[300px] flex-col items-center justify-center gap-5 rounded-lg bg-white font-medium shadow-xl">
-        <div className="flex  items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black hover:text-white">
+        <div
+          onClick={() => signIn("google")}
+          className="flex  items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black hover:text-white"
+        >
           <Image
             src={"/google.webp"}
             width={30}
