@@ -21,7 +21,7 @@ export const Select = () => {
   const [value, setValue] = useState<readonly Option[]>([]);
 
   const handleKeyDown: KeyboardEventHandler = (event) => {
-    if (value.length > 4) return alert("Hey 5 ingredients is the max!");
+    if (value.length > 9) return alert("Hey 10 ingredients is the max!");
     if (!inputValue) return;
     switch (event.key) {
       case "Enter":

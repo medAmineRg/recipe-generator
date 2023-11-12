@@ -62,8 +62,13 @@ const Footer = () => {
       </div>
       <div className="my-5 border"></div>
       <div className="flex justify-between text-xs">
-        <p>2023 alright reserved</p>
-        <p>Created By RGUIG Mohamed Amine</p>
+        <p className="text-blue-500">2023 &#169; alright reserved</p>
+        <p>
+          Created By{" "}
+          <span className="font-semibold text-blue-500">
+            RGUIG Mohamed Amine
+          </span>
+        </p>
       </div>
     </div>
   );

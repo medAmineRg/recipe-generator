@@ -5,6 +5,7 @@ import prisma from "./connect";
 import { getServerSession } from "next-auth";
 
 export const authOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({
@@ -16,6 +17,23 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
   ],
+  pages: {
+    signIn: "/login",
+  },
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      user && (token.user = user);
+      return token;
+    },
+    session: async ({ session, token }) => {
+      const user = token.user;
+      session.user = user;
+      return session;
+    },
+  },
 };
 
 export const serverSession = async () => {

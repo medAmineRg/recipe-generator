@@ -1,31 +1,35 @@
 import Link from "next/link";
 import React from "react";
+import { serverSession } from "@/utils/options";
+import { signOut } from "next-auth/react";
+import Button from "./Button";
 
-const NavBar = () => {
+const NavBar = async () => {
+  const session = await serverSession();
+
   return (
     <div className="flex items-center justify-between text-sm">
       <div>
         <Link
           href={"/recipe"}
-          className="text-lg font-medium  hover:text-slate-700"
+          className="text-lg font-medium  text-blue-500 hover:text-blue-800"
         >
           CWT
         </Link>
       </div>
 
       <div className="flex gap-4 font-medium">
-        <Link href={"/collection"} className="p-2 hover:text-slate-700">
-          Collection
-        </Link>
-        <Link href={"/about"} className="p-2 hover:text-slate-700">
-          About
-        </Link>
-        <Link
-          href={"/sign-out"}
-          className="rounded-lg border border-slate-900 p-2 hover:bg-slate-900 hover:text-white"
-        >
-          Sign out
-        </Link>
+        {session && (
+          <>
+            <Link
+              href={"/collection"}
+              className="p-2 text-blue-500 hover:text-blue-800"
+            >
+              Collection
+            </Link>
+            <Button />
+          </>
+        )}
       </div>
     </div>
   );

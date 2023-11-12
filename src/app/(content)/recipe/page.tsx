@@ -1,4 +1,3 @@
-import { recipeType } from "@/app/types/Types";
 import AppDescription from "@/components/AppDescription";
 import GeneratedRecipeContent from "@/components/GeneratedRecipeContent";
 import { Select } from "@/components/Select";
@@ -23,12 +22,12 @@ const recipe = {
   ],
 };
 // let recipe: recipeType | undefined = undefined;
-const Recipe = () => {
+const Recipe = async () => {
   return (
-    <div>
+    <div className="my-20 min-h-screen">
       <div className="mt-5 flex flex-col gap-4 font-medium lg:flex-row lg:justify-center">
         <Select />
-        <button className="rounded-md border border-slate-900 bg-slate-900 p-2 text-white hover:bg-white hover:text-black">
+        <button className="rounded-md border border-blue-500 bg-blue-500 p-2 text-white hover:bg-white hover:text-black">
           Generate a recipe
         </button>
       </div>
