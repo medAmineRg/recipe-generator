@@ -35,7 +35,10 @@ const Login = () => {
           ></Image>
           <p>Sign in with Google</p>
         </div>
-        <div className="flex items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black hover:text-white">
+        <div
+          onClick={() => signIn("github")}
+          className="flex items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black hover:text-white"
+        >
           <Image
             src={"/github.png"}
             width={30}

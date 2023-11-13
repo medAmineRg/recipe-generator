@@ -58,10 +58,11 @@ model VerificationToken {
 
 model Recipe {
   id                    String   @id @default(cuid()) @map("_id")
-  name                  String
+  recipeName            String
   ingredients           String[]
   additionalIngredients String[]
   steps                 String[]
   userEmail             String
   user                  User     @relation(fields: [userEmail], references: [email])
+  imgURL                String
 }

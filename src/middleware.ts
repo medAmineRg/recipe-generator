@@ -4,13 +4,11 @@ export default withAuth(
     // Matches the pages config in `[...nextauth]`
     // `withAuth` augments your `Request` with the user's token.
     function middleware(req) {
-        console.log(req.nextauth.token)
     },
     {
         callbacks: {
             authorized: ({ token }) => {
-                console.log(token);
-
+                // console.log(token);
                 return !!token
             }
         },
@@ -19,4 +17,4 @@ export default withAuth(
         }
     }
 )
-export const config = { matcher: ["/recipe"] }
+export const config = { matcher: ["/recipe", "/collection"] }
