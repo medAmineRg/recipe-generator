@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/providers/AuthProvider";
+import { RecipeContextProvider } from "@/context/RecipeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + " p-5"}>
-        <AuthProvider>
-          <NavBar />
-          {children}
-          <Footer />
-        </AuthProvider>
+        <RecipeContextProvider>
+          <AuthProvider>
+            <NavBar />
+            {children}
+            <Footer />
+          </AuthProvider>
+        </RecipeContextProvider>
       </body>
     </html>
   );

@@ -23,10 +23,11 @@ async function fetchData(text: string) {
 export const POST = async (req: NextRequest) => {
     try {
         const token = await getToken({ req })
+        if (!token) return NextResponse.json({ message: "Not Authorized" }, { status: 403 })
         const { ingredients } = await req.json()
         const response = await openai.completions.create({
             model: 'gpt-3.5-turbo-instruct',
-            prompt: `create a detailed one recipe with only the following ingredients ${ingredients.join(" ")} salt in following json format :
+            prompt: `create a detailed one recipe with only the following ingredients ${ingredients.join(" ")} in following json format :
         // add additionalIngredients (max 3)
         {
         "recipeName": // string,
@@ -49,6 +50,26 @@ export const POST = async (req: NextRequest) => {
         return NextResponse.json({ ...recipe, imgURL }, { status: 201 })
     } catch (error) {
         console.log(error);
-        return NextResponse.json({ "message": "get route" }, { status: 500 })
+        return NextResponse.json({ "message": "Something went wrong while creating the recipes" }, { status: 500 })
     }
 }
+
+const recipe = {
+    recipeName: "Cheese Omelette",
+    ingredients: ["Eggs", "Cheese"],
+    additionalIngredients: [
+        "Salt",
+        "Pepper",
+        "Chopped vegetables (e.g., bell peppers)",
+    ],
+    steps: [
+        "Step 1: Crack the eggs into a bowl and beat them.",
+        "Step 2: Heat a non-stick skillet over medium heat.",
+        "Step 3: Pour the beaten eggs into the skillet.",
+        "Step 4: Let the eggs cook undisturbed until the edges start to set.",
+        "Step 5: Add your choice of additional ingredients, such as cheese, salt, pepper, and chopped vegetables.",
+        "Step 6: Carefully fold the omelette over the ingredients to create a half-moon shape.",
+        "Step 7: Continue cooking until the omelette is fully set but still moist inside.",
+        "Step 8: Slide the omelette onto a plate, and it's ready to serve!",
+    ],
+};

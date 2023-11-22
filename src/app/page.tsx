@@ -18,7 +18,7 @@ const Home = () => {
           </div>
           <Link
             href={"/recipe"}
-            className="rounded-2xl border border-blue-500 bg-blue-500 p-2 text-center font-bold text-white hover:bg-white hover:text-black md:w-1/3"
+            className="mt-5 rounded-2xl border border-blue-500 bg-blue-500 p-2 text-center font-bold text-white hover:bg-white hover:text-black md:w-1/3"
           >
             Try it
           </Link>
@@ -33,7 +33,7 @@ const Home = () => {
           />
         </div>
       </div>
-      <div className="my-20 grid place-items-center gap-10 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+      <div className="my-20 grid place-items-center gap-10 text-black md:grid-cols-2 md:gap-8 lg:grid-cols-3">
         <FeatureItem
           img="/generate-recipe.png"
           heading="Ingredient-Based Recipe Generation :"

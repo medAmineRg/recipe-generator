@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { serverSession } from "@/utils/options";
-import { signOut } from "next-auth/react";
 import Button from "./Button";
 
 const NavBar = async () => {
@@ -12,7 +11,7 @@ const NavBar = async () => {
       <div>
         <Link
           href={"/recipe"}
-          className="text-lg font-medium  text-blue-500 hover:text-blue-800"
+          className="text-xl font-bold hover:text-slate-200"
         >
           CWT
         </Link>
@@ -21,10 +20,7 @@ const NavBar = async () => {
       <div className="flex gap-4 font-medium">
         {session && (
           <>
-            <Link
-              href={"/collection"}
-              className="p-2 text-blue-500 hover:text-blue-800"
-            >
+            <Link href={"/collection"} className="p-2 hover:text-slate-200">
               Collection
             </Link>
             <Button />

@@ -24,7 +24,7 @@ const Login = () => {
       <div className="flex h-[220px] w-[300px] flex-col items-center justify-center gap-5 rounded-lg bg-white font-medium drop-shadow-xl">
         <div
           onClick={() => signIn("google")}
-          className="flex  items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black hover:text-white"
+          className="flex  items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black"
         >
           <Image
             src={"/google.webp"}
@@ -33,11 +33,11 @@ const Login = () => {
             alt="google"
             className="p rounded bg-white"
           ></Image>
-          <p>Sign in with Google</p>
+          <p className="text-black">Sign in with Google</p>
         </div>
         <div
           onClick={() => signIn("github")}
-          className="flex items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black hover:text-white"
+          className="flex items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black"
         >
           <Image
             src={"/github.png"}
@@ -46,7 +46,7 @@ const Login = () => {
             alt="google"
             className="rounded bg-white p-[2px]"
           ></Image>
-          <p>Sign in with Github</p>
+          <p className="text-black">Sign in with Github</p>
         </div>
       </div>
     </div>
