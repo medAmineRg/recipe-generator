@@ -33,8 +33,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/utils/options.js",
-    "src/app/api/auth/[...nextauth]/route.js",
+    "src/utils/options.ts",
+    "src/app/api/auth/[...nextauth]/route.ts",
     "build/types/**/*.ts"
   ],
   "exclude": [
