@@ -24,8 +24,12 @@ export const POST = async (req: NextRequest) => {
     try {
         const token = await getToken({ req })
         if (!token) return NextResponse.json({ message: "Not Authorized" }, { status: 403 })
-        const user = await prisma.user.findFirst({ where: { email: token.email as string } })
+        const user = await prisma.user.findFirst({ where: { email: token.email as string, } })
         console.log(user);
+
+        if (user?.nbrOfRecipes === 0) {
+            return NextResponse.json({ message: "You have generated 3 meals" })
+        }
 
         // const { ingredients } = await req.json()
         // const response = await openai.completions.create({
@@ -51,6 +55,15 @@ export const POST = async (req: NextRequest) => {
         //     }
         // })
         // return NextResponse.json({ ...recipe, imgURL }, { status: 201 })
+        await prisma.user.update({
+            where: { email: token.email as string }, // Specify conditions to find the record
+            data: {
+                nbrOfRecipes: {
+                    decrement: 1, // Decrement by the desired value
+                },
+            },
+        });
+
         return NextResponse.json(recipe, { status: 201 })
 
     } catch (error) {

@@ -26,7 +26,7 @@ async function createRecipe(value: string[]) {
     ingredients: value,
   };
   const response = await axiosInstance.post(
-    "/generate-recipe",
+    "/recipe",
 
     JSON.stringify(data),
   );
