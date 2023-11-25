@@ -3,17 +3,18 @@ import Image from "next/image";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Spinner from "@/components/Spinner";
 const Login = () => {
   const { status } = useSession();
   const router = useRouter();
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
   if (status === "authenticated") {
     return router.push("/recipe");
   }
   return (
-    <div className="mt-20 flex h-screen flex-col items-center">
+    <div className="flex h-[70vh] flex-col items-center justify-center">
       <h1 className="text-2xl font-semibold md:text-4xl">
         Log in to your account
       </h1>

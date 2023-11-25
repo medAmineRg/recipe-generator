@@ -51,7 +51,7 @@ export const POST = async (req: NextRequest) => {
         //     }
         // })
         // return NextResponse.json({ ...recipe, imgURL }, { status: 201 })
-        return NextResponse.json({ message: "ok" }, { status: 201 })
+        return NextResponse.json(recipe, { status: 201 })
 
     } catch (error) {
         console.log(error);
@@ -77,4 +77,5 @@ const recipe = {
         "Step 7: Continue cooking until the omelette is fully set but still moist inside.",
         "Step 8: Slide the omelette onto a plate, and it's ready to serve!",
     ],
+    imgURL: "https://d14uq1pz7dzsdq.cloudfront.net/eccde9ce-3970-40f6-9757-b0d71381d777_.png?Expires=1701357861&Signature=sY5IvxPCIdm0lnsvJewgOxW4o~LY8SaSIZ69LEt9Lxth56hN2uSXGsFa5XQHqyxQToJj2Dec-vvn7uf0-pzBTaFNrJFDzT02Msla5NOEbSRYD3t3t5JnfYMNtD-ciU3M19KXmch1Z2poHAdMepAHE4k~noPwP9I8Q5sHsmq21ZE4Yum2aQlPZelOkQvfUUaAmQPVfXSl51hB9j7Rr6Ch7Pz7OG~ElaHJ4QJQuA2R7CvPiCoBSe5Ay8W1e5FgiqWLhc9G95V6VtiOtYcPk7HYH30x-arGSXaRd4NFEfmRS81PWquqg~zsjA-xD-fuRgRXevq8oQ91p12irzZA-xUfiQ__&Key-Pair-Id=K1F55BTI9AHGIK"
 };

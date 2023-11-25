@@ -5,13 +5,15 @@ import React from "react";
 const Item = ({
   imgURL,
   recipeName,
+  id,
 }: {
   imgURL: string;
   recipeName: string;
+  id: string;
 }) => {
   return (
     <div className="rounded-lg shadow-md lg:w-[330px]">
-      <Link href="#">
+      <Link href={`/recipe/${id}`}>
         <div className="rounded-lg px-4 py-6 hover:cursor-pointer">
           <Image
             width={412}

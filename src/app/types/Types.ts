@@ -5,4 +5,5 @@ export type recipeType = {
     ingredients: string[];
     additionalIngredients: string[];
     steps: string[];
+    isLoading: boolean;
 }

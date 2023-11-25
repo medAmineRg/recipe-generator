@@ -4,10 +4,15 @@ import Image from "next/image";
 import { useContext } from "react";
 import AppDescription from "@/components/AppDescription";
 import { RecipeContext, RecipeContextProps } from "@/context/RecipeContext";
+import Spinner from "./Spinner";
+import { recipeType } from "@/app/types/Types";
 
 const GeneratedRecipeContent = () => {
-  const { recipe } = useContext<RecipeContextProps | undefined>(RecipeContext);
-  console.log(recipe);
+  //@ts-ignore
+  const { recipe }: recipeType = useContext<RecipeContextProps | undefined>(
+    RecipeContext,
+  );
+  if (recipe?.isLoading) return <Spinner />;
 
   return recipe !== undefined ? (
     <div className="mt-10 flex flex-col items-center justify-center px-5">
@@ -46,11 +51,11 @@ const GeneratedRecipeContent = () => {
         {/* ingredients + preparation */}
         <div className="">
           <div className="gap-8 lg:flex">
-            <div className="mt-10 rounded-lg bg-gray-50 p-4 shadow-sm lg:mt-0">
-              <h3 className="text-xl font-medium text-blue-600">Ingredients</h3>
+            <div className="mt-10 rounded-lg border p-4 shadow-sm lg:mt-0">
+              <h3 className="text-xl font-medium text-blue-400">Ingredients</h3>
               <div className="ml-2 mt-2">
                 {recipe.ingredients.map((ingredient) => (
-                  <li className="font-medium text-black" key={ingredient}>
+                  <li className="font-medium text-white" key={ingredient}>
                     {ingredient}
                   </li>
                 ))}

@@ -3,6 +3,9 @@ import { RecipeContext } from "@/context/RecipeContext";
 import { axiosInstance } from "@/utils/axiosInstance";
 import { KeyboardEventHandler, useContext, useState } from "react";
 import CreatableSelect from "react-select/creatable";
+import { toast } from "sonner";
+import Spinner from "./Spinner";
+import { recipeType } from "@/app/types/Types";
 
 const components = {
   DropdownIndicator: null,
@@ -32,13 +35,13 @@ async function createRecipe(value: string[]) {
 
 export const Select = () => {
   // @ts-ignore
-  const { setRecipe } = useContext(RecipeContext);
+  const { setRecipe, recipe } = useContext(RecipeContext);
 
   const [inputValue, setInputValue] = useState("");
   const [value, setValue] = useState<readonly Option[]>([]);
 
   const handleKeyDown: KeyboardEventHandler = (event) => {
-    if (value.length > 9) return alert("Hey 10 ingredients is the max!");
+    if (value.length > 9) return toast.info("Hey 10 ingredients is the max!");
     if (!inputValue) return;
     switch (event.key) {
       case "Enter":
@@ -50,9 +53,10 @@ export const Select = () => {
   };
 
   const handleSubmit = async () => {
+    setRecipe((prev: recipeType) => ({ ...prev, isLoading: true }));
     const ingredients = value.map((val) => val.value);
-    const recipe = await createRecipe(ingredients);
-    setRecipe(recipe);
+    const generatedRecipe = await createRecipe(ingredients);
+    setRecipe(() => ({ ...generatedRecipe, isLoading: false }));
   };
 
   return (
@@ -79,9 +83,11 @@ export const Select = () => {
         className="min-w-[300px] text-white"
       />
       <button
-        disabled={!value.length}
+        disabled={!value.length || recipe?.isLoading}
         onClick={handleSubmit}
-        className="border-sltate-100 rounded-md border bg-slate-100  p-2  text-black hover:cursor-pointer hover:bg-slate-200"
+        className={`${
+          recipe?.isLoading ? "hover:cursor-not-allowed" : ""
+        } border-sltate-100 rounded-md border bg-slate-100  p-2  text-black hover:cursor-pointer hover:bg-slate-200`}
       >
         Generate a recipe
       </button>
