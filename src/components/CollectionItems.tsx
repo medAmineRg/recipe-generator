@@ -20,13 +20,13 @@ const CollectionItems = () => {
       } catch (error) {
         console.log(error);
       }
+      setLoading(false);
     };
     getCollections();
-    setLoading(false);
   }, []);
   if (loading) return <Spinner />;
   return (
-    <>
+    <div className="grid place-items-center gap-10 md:grid-cols-2  lg:grid-cols-3">
       {recipes?.map((recipe: recipeType) => (
         <Item
           id={recipe.id}
@@ -35,7 +35,7 @@ const CollectionItems = () => {
           recipeName={recipe.recipeName}
         />
       ))}
-    </>
+    </div>
   );
 };
 

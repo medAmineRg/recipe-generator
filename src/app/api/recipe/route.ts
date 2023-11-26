@@ -28,7 +28,7 @@ export const POST = async (req: NextRequest) => {
         console.log(user);
 
         if (user?.nbrOfRecipes === 0) {
-            return NextResponse.json({ message: "You have generated 3 meals" })
+            return NextResponse.json({ message: "You have generated 3 meals" }, { status: 400 })
         }
 
         // const { ingredients } = await req.json()

@@ -1,31 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useContext, useEffect } from "react";
 import AppDescription from "@/components/AppDescription";
-import { RecipeContext, RecipeContextProps } from "@/context/RecipeContext";
-import Spinner from "./Spinner";
 import { recipeType } from "@/app/types/Types";
+import Spinner from "./Spinner";
 
-const GeneratedRecipeContent = ({
-  fetchedRecipe,
-}: {
-  fetchedRecipe?: recipeType;
-}) => {
-  //@ts-ignore
-  let { recipe, setRecipe }: recipeType = useContext<
-    RecipeContextProps | undefined
-  >(RecipeContext);
+const GeneratedRecipeContent = ({ recipe }: { recipe?: recipeType }) => {
+  // if (!recipe) return <AppDescription />;
+  if (recipe?.isLoading || !recipe) return <Spinner />;
 
-  useEffect(() => {
-    if (fetchedRecipe) {
-      setRecipe(fetchedRecipe);
-    }
-  }, []);
-
-  if (recipe?.isLoading) return <Spinner />;
-
-  return recipe !== undefined ? (
+  return (
     <div className="mt-10 flex flex-col items-center justify-center px-5">
       <div className="mt-5 w-[95%] gap-5 lg:flex lg:w-[70%] lg:justify-center">
         <div className="flex flex-col items-center gap-4">
@@ -98,8 +82,6 @@ const GeneratedRecipeContent = ({
         </div>
       </div>
     </div>
-  ) : (
-    <AppDescription />
   );
 };
 

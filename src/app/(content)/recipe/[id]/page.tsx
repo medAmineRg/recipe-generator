@@ -1,23 +1,29 @@
+"use client";
 import GeneratedRecipeContent from "@/components/GeneratedRecipeContent";
 import { axiosInstance } from "@/utils/axiosInstance";
-import { cookies } from "next/headers";
+import { toast } from "sonner";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-async function getData(id: string) {
-  const session = cookies().get("next-auth.session-token");
-
-  const res = await axiosInstance.get(`/recipe/${id}`, {
-    headers: {
-      Cookie: `${session?.name}=${session?.value};`,
-    },
-  });
-  return res.data;
-}
-
-const RecipeDetail = async ({ params }: { params: { id: string } }) => {
+const RecipeDetail = ({ params }: { params: { id: string } }) => {
   const id = params.id;
-  const recipe = await getData(id);
-  if (!recipe) return <p>Recipe not found</p>;
-  return <GeneratedRecipeContent fetchedRecipe={recipe} />;
+  const [recipe, setRecipe] = useState();
+  const router = useRouter();
+
+  useEffect(() => {
+    const getData = async (id: string) => {
+      try {
+        const res = await axiosInstance.get(`/recipe/${id}`);
+        setRecipe(res.data);
+      } catch (error) {
+        toast.dismiss();
+        toast.error("Recipe not Found");
+        router.push("/collection");
+      }
+    };
+    getData(id);
+  }, []);
+  return <GeneratedRecipeContent recipe={recipe} />;
 };
 
 export default RecipeDetail;

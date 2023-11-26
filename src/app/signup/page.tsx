@@ -35,7 +35,7 @@ const Login = () => {
           ></Image>
           <p>Sign up with Google</p>
         </div>
-        <div
+        {/* <div
           onClick={() => signIn("github")}
           className="flex items-center justify-center gap-4 rounded-md border border-slate-900  p-2  shadow-xl hover:cursor-pointer hover:bg-black hover:text-white"
         >
@@ -47,7 +47,7 @@ const Login = () => {
             className="rounded bg-white p-[2px]"
           ></Image>
           <p>Sign up with Github</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

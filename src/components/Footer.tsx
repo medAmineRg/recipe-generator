@@ -4,73 +4,78 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="mt-10">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <Link href={"https://www.linkedin.com/in/mohamed-amine-rguig/"}>
+    <footer className="mt-10">
+      <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-xs font-medium text-blue-500">
+            #{`Let's`} stay in touch! Connect with me on social media or drop me
+            an email.
+          </p>
+        </div>
+        <div className="flex gap-3">
+          <Link
+            href="mailto:rguig.medamine@gmail.com"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <Image
-              src={"/linkedin.webp"}
-              alt="social icon"
-              width={30}
-              height={30}
-              className="object-contain"
+              src={"/mail.svg"}
+              width={20}
+              height={20}
+              alt="mail-icon"
             ></Image>
           </Link>
-          <Link href={"https://www.instagram.com/"}>
+          <Link
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.linkedin.com/in/mohamed-amine-rguig-bb6523248/"
+          >
             <Image
-              src={"/instagram.webp"}
-              alt="social icon"
-              width={30}
-              height={30}
-              className="object-contain"
+              src={"/linkedin.svg"}
+              width={20}
+              height={20}
+              alt="linkedin-icon"
             ></Image>
           </Link>
-          <Link href={"https://www.facebook.com/"}>
+          <Link
+            href="https://www.facebook.com/mohamedamine.rg.1?mibextid=LQQJ4d"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <Image
-              src={"/facebook.png"}
-              alt="social icon"
-              width={30}
-              height={30}
-              className="object-contain"
+              src={"/facebook.svg"}
+              width={20}
+              height={20}
+              alt="facebook-icon"
+            ></Image>
+          </Link>
+          <Link
+            href="https://instagram.com/mohamed.amine.rguig?igshid=YTQwZjQ0NmI0OA%3D%3D&utm_source=qr"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Image
+              src={"/instagram.svg"}
+              width={20}
+              height={20}
+              alt="instagram-icon"
+            ></Image>
+          </Link>
+          <Link
+            href="https://github.com/medAmineRg?tab=repositories"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Image
+              src={"/github.svg"}
+              width={20}
+              height={20}
+              alt="github-icon"
             ></Image>
           </Link>
         </div>
-        <div className="text-sm md:flex md:gap-5">
-          <Link href="/gmail.com">
-            <div className="flex gap-2">
-              <Image
-                src={"/gmail.png"}
-                alt="social icon"
-                width={20}
-                height={20}
-                className="object-contain"
-              ></Image>
-              <p>rguig.medamine@gmail.com</p>
-            </div>
-          </Link>
-          <div className="mt-1 flex gap-2 md:mt-0">
-            <Image
-              src={"/phoneB.png"}
-              alt="social icon"
-              width={15}
-              height={15}
-              className="object-contain"
-            ></Image>
-            <p>+212 779 795 192</p>
-          </div>
-        </div>
       </div>
-      <div className="my-5 border"></div>
-      <div className="flex justify-between text-xs">
-        <p className="text-blue-500">2023 &#169; alright reserved</p>
-        <p>
-          Created By{" "}
-          <span className="font-semibold text-blue-500">
-            RGUIG Mohamed Amine
-          </span>
-        </p>
-      </div>
-    </div>
+    </footer>
   );
 };
 

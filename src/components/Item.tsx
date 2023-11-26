@@ -12,7 +12,7 @@ const Item = ({
   id: string;
 }) => {
   return (
-    <div className="rounded-lg shadow-md lg:w-[330px]">
+    <div className="rounded-lg bg-gradient-to-r from-slate-900 to-slate-700 shadow-md lg:w-[330px]">
       <Link href={`/recipe/${id}`}>
         <div className="rounded-lg px-4 py-6 hover:cursor-pointer">
           <Image
