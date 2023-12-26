@@ -37,5 +37,5 @@ yarn-error.log*
 next-env.d.ts
 
 #pretier
-./prettier.config.js
+prettier.config.js
 
