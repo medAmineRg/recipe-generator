@@ -7,10 +7,17 @@ const Footer = () => {
     <footer className="mt-10">
       <div className="mt-4 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-xs font-medium text-blue-500">
-            #{`Let's`} stay in touch! Connect with me on social media or drop me
-            an email.
-          </p>
+          <Link
+            rel="noopener noreferrer"
+            target="_blank"
+            href={"https://www.linkedin.com/in/mohamed-amine-rguig/"}
+          >
+            <p className="text-xs font-medium text-blue-500">
+              {/* #{`Let's`} stay in touch! Connect with me on social media or drop me
+            an email. */}
+              Created By Mohamed Amine Rguig
+            </p>
+          </Link>
         </div>
         <div className="flex gap-3">
           <Link
@@ -37,7 +44,7 @@ const Footer = () => {
               alt="linkedin-icon"
             ></Image>
           </Link>
-          <Link
+          {/* <Link
             href="https://www.facebook.com/mohamedamine.rg.1?mibextid=LQQJ4d"
             rel="noopener noreferrer"
             target="_blank"
@@ -60,7 +67,7 @@ const Footer = () => {
               height={20}
               alt="instagram-icon"
             ></Image>
-          </Link>
+          </Link> */}
           <Link
             href="https://github.com/medAmineRg?tab=repositories"
             rel="noopener noreferrer"

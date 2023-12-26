@@ -8,7 +8,7 @@ import { recipeType } from "@/app/types/Types";
 
 const CollectionItems = () => {
   const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getCollections = async () => {

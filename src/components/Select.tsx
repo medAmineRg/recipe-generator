@@ -3,7 +3,6 @@ import { axiosInstance } from "@/utils/axiosInstance";
 import React, { KeyboardEventHandler, useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import { toast } from "sonner";
-import Spinner from "./Spinner";
 import { recipeType } from "@/app/types/Types";
 
 const components = {
@@ -65,7 +64,7 @@ export const Select = ({
   };
 
   return (
-    <>
+    <div className="items-center justify-center gap-2 md:flex">
       <CreatableSelect
         components={components}
         inputValue={inputValue}
@@ -80,21 +79,21 @@ export const Select = ({
         styles={{
           control: (baseStyles, state) => ({
             ...baseStyles,
-            background: "transparent",
+            background: "white",
             fontSize: "12px",
           }),
         }}
-        className="min-w-[300px] "
+        className="min-w-[300px] max-w-lg"
       />
       <button
         disabled={submited || !value.length}
         onClick={handleSubmit}
         className={`${
-          (submited || !value.length) && "hover:cursor-wait "
-        } border-sltate-100 rounded-md border bg-slate-100  p-2  text-black hover:cursor-pointer hover:bg-slate-200`}
+          (submited || !value.length) && "hover:cursor-not-allowed "
+        } border-sltate-100 mt-2 rounded-md border bg-slate-100 p-2 text-sm text-black hover:cursor-pointer hover:bg-slate-200 md:mt-0`}
       >
         Generate a recipe
       </button>
-    </>
+    </div>
   );
 };

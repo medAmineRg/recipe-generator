@@ -1,13 +1,10 @@
-"use client";
-
 import Image from "next/image";
-import AppDescription from "@/components/AppDescription";
 import { recipeType } from "@/app/types/Types";
 import Spinner from "./Spinner";
 
 const GeneratedRecipeContent = ({ recipe }: { recipe?: recipeType }) => {
-  // if (!recipe) return <AppDescription />;
-  if (recipe?.isLoading || !recipe) return <Spinner />;
+  if (!recipe || recipe?.isLoading) return <Spinner />;
+  console.log(recipe);
 
   return (
     <div className="mt-10 flex flex-col items-center justify-center px-5">

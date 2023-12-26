@@ -22,7 +22,7 @@ const RecipeDetail = ({ params }: { params: { id: string } }) => {
       }
     };
     getData(id);
-  }, []);
+  }, [id, router]);
   return <GeneratedRecipeContent recipe={recipe} />;
 };
 

@@ -31,30 +31,29 @@ export const POST = async (req: NextRequest) => {
             return NextResponse.json({ message: "You have generated 3 meals" }, { status: 400 })
         }
 
-        // const { ingredients } = await req.json()
-        // const response = await openai.completions.create({
-        //     model: 'gpt-3.5-turbo-instruct',
-        //     prompt: `create a detailed one recipe with only the following ingredients ${ingredients.join(" ")} in following json format :
-        // // add additionalIngredients (max 3)
-        // {
-        // "recipeName": // string,
-        // "ingredients": // array of strings,
-        // "additionalIngredients": // array of strings,
-        // "steps": // array of strings max 10 steps
-        // }`,
-        //     max_tokens: 1000
-        // });
-        // const recipe = JSON.parse(response.choices[0].text)
-        // const img = await fetchData(recipe.recipeName)
-        // const imgURL = img.openai.items[0].image_resource_url;
-        // await prisma.recipe.create({
-        //     data: {
-        //         imgURL,
-        //         ...recipe,
-        //         userEmail: token?.email
-        //     }
-        // })
-        // return NextResponse.json({ ...recipe, imgURL }, { status: 201 })
+        const { ingredients } = await req.json()
+        const response = await openai.completions.create({
+            model: 'gpt-3.5-turbo-instruct',
+            prompt: `create a detailed one recipe (with only the following ingredients) ${ingredients.join(" ")} in following json format :
+        {
+        "recipeName": // string,
+        "ingredients": // array of strings,
+        "additionalIngredients": // you can add additional Ingredients (max 3) and should be an array of strings,
+        "steps": // array of strings max 10 steps
+        }
+        `,
+            max_tokens: 1000
+        });
+        const recipe = JSON.parse(response.choices[0].text)
+        const img = await fetchData(recipe.recipeName)
+        const imgURL = img.openai.items[0].image_resource_url;
+        await prisma.recipe.create({
+            data: {
+                imgURL,
+                ...recipe,
+                userEmail: token?.email
+            }
+        })
         await prisma.user.update({
             where: { email: token.email as string }, // Specify conditions to find the record
             data: {
@@ -64,7 +63,7 @@ export const POST = async (req: NextRequest) => {
             },
         });
 
-        return NextResponse.json(recipe, { status: 201 })
+        return NextResponse.json({ ...recipe, imgURL }, { status: 201 })
 
     } catch (error) {
         console.log(error);
@@ -72,23 +71,23 @@ export const POST = async (req: NextRequest) => {
     }
 }
 
-const recipe = {
-    recipeName: "Cheese Omelette",
-    ingredients: ["Eggs", "Cheese"],
-    additionalIngredients: [
-        "Salt",
-        "Pepper",
-        "Chopped vegetables (e.g., bell peppers)",
-    ],
-    steps: [
-        "Step 1: Crack the eggs into a bowl and beat them.",
-        "Step 2: Heat a non-stick skillet over medium heat.",
-        "Step 3: Pour the beaten eggs into the skillet.",
-        "Step 4: Let the eggs cook undisturbed until the edges start to set.",
-        "Step 5: Add your choice of additional ingredients, such as cheese, salt, pepper, and chopped vegetables.",
-        "Step 6: Carefully fold the omelette over the ingredients to create a half-moon shape.",
-        "Step 7: Continue cooking until the omelette is fully set but still moist inside.",
-        "Step 8: Slide the omelette onto a plate, and it's ready to serve!",
-    ],
-    imgURL: "https://d14uq1pz7dzsdq.cloudfront.net/eccde9ce-3970-40f6-9757-b0d71381d777_.png?Expires=1701357861&Signature=sY5IvxPCIdm0lnsvJewgOxW4o~LY8SaSIZ69LEt9Lxth56hN2uSXGsFa5XQHqyxQToJj2Dec-vvn7uf0-pzBTaFNrJFDzT02Msla5NOEbSRYD3t3t5JnfYMNtD-ciU3M19KXmch1Z2poHAdMepAHE4k~noPwP9I8Q5sHsmq21ZE4Yum2aQlPZelOkQvfUUaAmQPVfXSl51hB9j7Rr6Ch7Pz7OG~ElaHJ4QJQuA2R7CvPiCoBSe5Ay8W1e5FgiqWLhc9G95V6VtiOtYcPk7HYH30x-arGSXaRd4NFEfmRS81PWquqg~zsjA-xD-fuRgRXevq8oQ91p12irzZA-xUfiQ__&Key-Pair-Id=K1F55BTI9AHGIK"
-};
+// const recipe = {
+//     recipeName: "Cheese Omelette",
+//     ingredients: ["Eggs", "Cheese"],
+//     additionalIngredients: [
+//         "Salt",
+//         "Pepper",
+//         "Chopped vegetables (e.g., bell peppers)",
+//     ],
+//     steps: [
+//         "Step 1: Crack the eggs into a bowl and beat them.",
+//         "Step 2: Heat a non-stick skillet over medium heat.",
+//         "Step 3: Pour the beaten eggs into the skillet.",
+//         "Step 4: Let the eggs cook undisturbed until the edges start to set.",
+//         "Step 5: Add your choice of additional ingredients, such as cheese, salt, pepper, and chopped vegetables.",
+//         "Step 6: Carefully fold the omelette over the ingredients to create a half-moon shape.",
+//         "Step 7: Continue cooking until the omelette is fully set but still moist inside.",
+//         "Step 8: Slide the omelette onto a plate, and it's ready to serve!",
+//     ],
+//     imgURL: "https://d14uq1pz7dzsdq.cloudfront.net/eccde9ce-3970-40f6-9757-b0d71381d777_.png?Expires=1701357861&Signature=sY5IvxPCIdm0lnsvJewgOxW4o~LY8SaSIZ69LEt9Lxth56hN2uSXGsFa5XQHqyxQToJj2Dec-vvn7uf0-pzBTaFNrJFDzT02Msla5NOEbSRYD3t3t5JnfYMNtD-ciU3M19KXmch1Z2poHAdMepAHE4k~noPwP9I8Q5sHsmq21ZE4Yum2aQlPZelOkQvfUUaAmQPVfXSl51hB9j7Rr6Ch7Pz7OG~ElaHJ4QJQuA2R7CvPiCoBSe5Ay8W1e5FgiqWLhc9G95V6VtiOtYcPk7HYH30x-arGSXaRd4NFEfmRS81PWquqg~zsjA-xD-fuRgRXevq8oQ91p12irzZA-xUfiQ__&Key-Pair-Id=K1F55BTI9AHGIK"
+// };
