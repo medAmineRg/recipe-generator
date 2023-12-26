@@ -25,7 +25,6 @@ export const POST = async (req: NextRequest) => {
         const token = await getToken({ req })
         if (!token) return NextResponse.json({ message: "Not Authorized" }, { status: 403 })
         const user = await prisma.user.findFirst({ where: { email: token.email as string, } })
-        console.log(user);
 
         if (user?.nbrOfRecipes === 0) {
             return NextResponse.json({ message: "You have generated 3 meals" }, { status: 400 })
